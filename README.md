@@ -1,2 +1,2 @@
-# arch-showcase
-An application to help architect an building engineers to showcase their work
+# Arch-showcase
+An application to help architects and building engineers to showcase their work
