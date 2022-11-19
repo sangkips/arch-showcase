@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  app:
+    image: sangkips/arch:latest
+    working_dir: /usr/src/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - Env=local
+      - DEBUG=1
+      - ALLOWED_HOSTS=*
+      - SECRET_KEY=mystrngpassword
+      - APP_PATH=/var/www/arch
+      - DATABASE_DB=arch
+      - DATABASE_USER=arch
+      - DATABASE_PASSWORD=arch
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+
+    networks:
+      - arch_net
+  db:
+    image: postgres:14.5-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - arch_pg:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=arch
+      - POSTGRES_USER=arch
+      - POSTGRES_DB=arch
+    networks:
+      - arch_net
+volumes:
+  arch_pg:
+  arch_app:
+
+networks:
+  arch_net:
