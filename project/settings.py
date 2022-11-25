@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'showcase',
 ]
 
+AUTH_USER_MODEL = 'showcase.CustomUser'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
