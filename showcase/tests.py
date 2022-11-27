@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 class UsermanagerTest(TestCase):
     def create_test_user(self):
         User = get_user_model
-        user = User.objects.create_user(email='test@example.com', password='pass124')
+        user = User.objects.create_user(email='test@example.com', password='pass123')
         self.assertEqual(user.email, 'test@example.com')
         self.assertTrue(user.is_active)
         self.assertFalse(user.is_superuser)
@@ -20,7 +20,7 @@ class UsermanagerTest(TestCase):
         with self.assertRaises(TypeError):
             User.objects.create_user(email='')
         with self.assertRaises(ValueError):
-            User.objects.create_user(email='', password='pass124')
+            User.objects.create_user(email='', password='pass123')
 
     def create_test_superuser(self):
         User = get_user_model
@@ -40,3 +40,4 @@ class UsermanagerTest(TestCase):
                 password = 'pass123',
                 is_superuser = False
             )
+    
